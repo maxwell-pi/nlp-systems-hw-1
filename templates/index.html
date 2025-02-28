@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notebook</title>
+    <link rel="stylesheet" href="static/style.css">
+</head>
+<body>
+
+    <h1>Notebook</h1>
+    
+    <div class="container">
+        <div class="notes-list">
+            <form method="GET">
+                <input type="text" name="search" placeholder="Search notes:" value="{{search_term}}">
+                <button type="submit">Filter</button>
+            </form>
+
+            <ul>
+                {% for title in notes %}
+                    <li><a href="/note/{{title}}">{{title}}</a></li>
+                {% else %}
+                    <p>No notes, not even one. Add a note, or if you have run a filter, please submit a blank filter to see the full list again.</p>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <div class="vertical-bar"></div>
+
+        <div class="add-note">
+            <a href="/add">Add a New Note</a>
+        </div>
+    </div>
+
+</body>
+</html>
