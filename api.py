@@ -6,8 +6,8 @@ nb = Notebook()
 app = FastAPI()
 
 class Note(BaseModel):
-    title: str
-    body: str
+    name: str
+    content: str
 
 @app.get("/")
 def root():
@@ -26,12 +26,12 @@ def get_note(title: str):
 
 @app.get("/find")
 def find(term: str):
-    return {"term": term, "matching note titles": nb.find(term)}
+    return {"term": term, "titles of matching note": nb.find(term)}
 
 @app.post('/add')
 def add(note: Note):
     try:
-        nb[note.title] = note.body
+        nb[note.name] = note.content
     except ValueError:
-        raise HTTPException(status_code=400, detail=f'Cannot overwrite pre-exisitng note with title {note.title}.')
-    return {'message': 'Note added successfully.', 'title': note.title, 'body': note.body}
+        raise HTTPException(status_code=400, detail=f'Cannot overwrite pre-exisitng note with title {note.name}.')
+    return {'message': 'Note added successfully.', 'title': note.name, 'body': note.content}
