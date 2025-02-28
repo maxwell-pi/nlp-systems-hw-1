@@ -13,6 +13,8 @@ Notebook notes are stored in `history.json`; this is included to give some sampl
 ## Notebook Documentation
 The Notebook class is essentially a wrapper for a dictionary with title keys and note body values. However, on instantiation and on put operations, the state of the dictionary is loaded or saved in JSON format for the sake of persistence. The Notebook class is otherwise a diminished dictionary, not allowing deletions or updates to existing keys.
 
+Notebook objects support dictionary-like interaction for `len(nb)`, `key in nb`, iteration through keys, `nb.items()`, key lookup (`nb[key]`), and insertion by key (`nb[key] = value`). Notebook objects also expose a `find()` method, which takes a search query and returns a list of the titles of notes which contain this search query as a substring in their bodies.
+
 ## API Documentation
 - The root path allows only GET requests, returning a helper message of the form `{"message": "a helpful message"}.
 - The `/list` path allows only GET requests, returning the full list of note titles, of the form {'note_list': ['title1', 'title2', ...]}
