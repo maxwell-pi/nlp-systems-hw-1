@@ -11,7 +11,7 @@ st.title("Notebook")
 
 search_term = st.text_input("Filter notes (make sure to press enter to apply filter):")
 
-filtered_notes = nb.find(search_term) if search_term else nb.notes_dict
+filtered_notes = nb.find(search_term) if search_term else nb
 
 for title in filtered_notes:
     if st.button(title):
