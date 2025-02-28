@@ -15,7 +15,7 @@ def root():
 
 @app.get("/list")
 def get_list():
-    return {'note_list': list(nb.items())}
+    return {'note_list': list(nb)}
 
 @app.get("/note/{title}")
 def get_note(title: str):
